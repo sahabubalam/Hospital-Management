@@ -5,49 +5,52 @@
             <div class="content">
                 <div class="row">
                     <div class="col-sm-4 col-3">
-                        <h4 class="page-title">Doctors</h4>
+                        <h4 class="page-title">Patients</h4>
                     </div>
                     <div class="col-sm-8 col-9 text-right m-b-20">
-                        <a href="{{route('doctor.add')}}" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Doctor</a>
+                        <a href="/add-patient" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Patient</a>
                     </div>
-                </div>
-                @if(Session::has('doctor_deleted'))
-                        <div class="alert alert-success" role="alert">
-                            {{Session::get('doctor_deleted')}}
-                        </div>
-                @endif
-				<div class="row doctor-grid">
-                @foreach($doctors as $doctor)
-              
-                    <div class="col-md-4 col-sm-4  col-lg-3">
-                  
-                        <div class="profile-widget">
-                            <div class="doctor-img">
-                                <a class="avatar" href="profile.html"><img alt="" src="{{asset('doctors')}}/{{$doctor->photo}}"></a>
-                            </div>
-                            <div class="dropdown profile-action">
-                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="/edit-doctor/{{$doctor->id}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                    <a class="dropdown-item" class="btn btn-danger"  href="/delete-doctor/{{$doctor->id}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a> 
-                                </div>
-                            </div>
-                            <h4 class="doctor-name text-ellipsis"><a href="profile.html">{{$doctor->first_name}}</a></h4>
-                            <div class="doc-prof">{{$doctor->title}}</div>
-                            <div class="user-country">
-                                <i class="fa fa-map-marker"></i> {{$doctor->country}}
-                            </div>
-                        </div>
-                      
-                    </div>
-                    @endforeach
                 </div>
 				<div class="row">
-                    <div class="col-sm-12">
-                        <div class="see-all">
-                            <a class="see-all-btn" href="javascript:void(0);">Load More</a>
-                        </div>
-                    </div>
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-border table-striped custom-table datatable mb-0">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Age</th>
+										<th>Address</th>
+										<th>Phone</th>
+										<th>Email</th>
+										<th class="text-right">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+								@foreach($patients as $patient)
+									<tr>
+								
+										<td>{{$patient->name}}</td>
+										<td>{{$patient->age}}</td>
+										<td>{{$patient->address}}</td>
+										<td>{{$patient->phone}}</td>
+										<td>{{$patient->email}}</td>
+										<td class="text-right">
+											<div class="dropdown dropdown-action">
+												<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+												<div class="dropdown-menu dropdown-menu-right">
+													<a class="dropdown-item" href="edit-patient.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+													<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									@endforeach
+									
+								
+								</tbody>
+							</table>
+						</div>
+					</div>
                 </div>
             </div>
             <div class="notification-box">
@@ -260,4 +263,5 @@
                 </div>
             </div>
         </div>
-        @endsection
+
+@endsection

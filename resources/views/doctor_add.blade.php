@@ -38,19 +38,26 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
+                                        <label>Title <span class="text-danger">*</span></label>
+                                        <input class="form-control" name="title" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                         <label>Email <span class="text-danger">*</span></label>
                                         <input class="form-control" name="email" type="email">
                                     </div>
                                 </div>
-                               
-								<div class="col-sm-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Date of Birth</label>
                                         <div class="cal-icon">
-                                            <input type="text" name="dob" class="form-control datetimepicker">
+                                            <input type="text"  name="dob" class="form-control datetimepicker">
                                         </div>
                                     </div>
                                 </div>
+                               
+								
                                 <div class="col-sm-6">
 									<div class="form-group gender-select">
 										<label class="gen-label">Gender:</label>

@@ -4,48 +4,57 @@
 <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-sm-4 col-3">
-                        <h4 class="page-title">Doctors</h4>
+                    <div class="col-sm-5 col-5">
+                        <h4 class="page-title">Departments</h4>
                     </div>
-                    <div class="col-sm-8 col-9 text-right m-b-20">
-                        <a href="{{route('doctor.add')}}" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Doctor</a>
+                    <div class="col-sm-7 col-7 text-right m-b-30">
+                        <a href="/add-department" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Department</a>
                     </div>
                 </div>
-                @if(Session::has('doctor_deleted'))
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                        @if(Session::has('status_updated'))
                         <div class="alert alert-success" role="alert">
-                            {{Session::get('doctor_deleted')}}
+                            {{Session::get('status_updated')}}
                         </div>
-                @endif
-				<div class="row doctor-grid">
-                @foreach($doctors as $doctor)
-              
-                    <div class="col-md-4 col-sm-4  col-lg-3">
-                  
-                        <div class="profile-widget">
-                            <div class="doctor-img">
-                                <a class="avatar" href="profile.html"><img alt="" src="{{asset('doctors')}}/{{$doctor->photo}}"></a>
-                            </div>
-                            <div class="dropdown profile-action">
-                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="/edit-doctor/{{$doctor->id}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                    <a class="dropdown-item" class="btn btn-danger"  href="/delete-doctor/{{$doctor->id}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a> 
-                                </div>
-                            </div>
-                            <h4 class="doctor-name text-ellipsis"><a href="profile.html">{{$doctor->first_name}}</a></h4>
-                            <div class="doc-prof">{{$doctor->title}}</div>
-                            <div class="user-country">
-                                <i class="fa fa-map-marker"></i> {{$doctor->country}}
-                            </div>
-                        </div>
-                      
-                    </div>
-                    @endforeach
-                </div>
-				<div class="row">
-                    <div class="col-sm-12">
-                        <div class="see-all">
-                            <a class="see-all-btn" href="javascript:void(0);">Load More</a>
+                        @endif  
+                            <table class="table table-striped custom-table mb-0 datatable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Department Name</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($departments as $department)
+                                    <tr>
+                                        <td>1</td>
+                                        <td>{{$department->department_name}}</td>
+                                       <?php if($department->status=='1') { ?>
+                                        <td><a href="/status-update/{{$department->id}}" class="custom-badge status-green">Active</span></a>
+                                      <?php } else { ?>
+                                        <td><a href="/status-update/{{$department->id}}" class="custom-badge status-red">Inactive</span></a>
+
+                                        <?php } ?>
+                                       
+										
+                                        
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="edit-department.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach   
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -42,7 +42,6 @@ return [
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
-            'auth_mode' => null,
         ],
 
         'ses' => [
@@ -84,7 +83,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'sahabub.cse.just@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
@@ -98,6 +97,19 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
+
+    /*
+    |--------------------------------------------------------------------------
+    | To remove stream_socket_enable_crypto() Error
+    |--------------------------------------------------------------------------
+    */
+    'stream' => [
+      'ssl' => [
+        'allow_self_signed' => true,
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+      ],
+    ],
 
     'markdown' => [
         'theme' => 'default',

@@ -9,9 +9,13 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-datetimepicker.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
+  
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+
+    
     <!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
@@ -147,16 +151,16 @@
                             <a href="{{route('doctor.list')}}"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
                         </li>
                         <li>
-                            <a href="patients.html"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
+                            <a href="/patient-list"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
                         </li>
                         <li>
-                            <a href="appointments.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
+                            <a href="/appointment-list"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
                         </li>
                         <li>
                             <a href="schedule.html"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
                         </li>
                         <li>
-                            <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
+                            <a href="/department-list"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
                         </li>
 						<li class="submenu">
 							<a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
@@ -310,11 +314,27 @@
     <script src="{{asset('assets/js/jquery-3.2.1.min.js')}}"></script>
 	<script src="{{asset('assets/js/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.slimscroll.js')}}"></script>
-    <script src="{{asset('assets/js/Chart.bundle.js')}}"></script>
-    <script src="{{asset('assets/js/chart.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.slimscroll.js')}}"></script> 
+   <script src="{{asset('assets/js/Chart.bundle.js')}}"></script> 
+    
     <script src="{{asset('assets/js/app.js')}}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   
+    <!-- <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet" type="text/css" /> 
+
+  
+  
+    <script type="text/javascript">
+
+    $( "#datepicker" ).datepicker();
+
+</script>
+
+    
     <script>
         // function previewFile(input){
         //     var file=$("input[type=file]").get(0).files[0];

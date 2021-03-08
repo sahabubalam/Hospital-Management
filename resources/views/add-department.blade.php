@@ -4,53 +4,36 @@
 <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-sm-4 col-3">
-                        <h4 class="page-title">Doctors</h4>
-                    </div>
-                    <div class="col-sm-8 col-9 text-right m-b-20">
-                        <a href="{{route('doctor.add')}}" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Doctor</a>
+                    <div class="col-lg-8 offset-lg-2">
+                        <h4 class="page-title">Add Department</h4>
                     </div>
                 </div>
-                @if(Session::has('doctor_deleted'))
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                    @if(Session::has('department_added'))
                         <div class="alert alert-success" role="alert">
-                            {{Session::get('doctor_deleted')}}
+                            {{Session::get('department_added')}}
                         </div>
-                @endif
-				<div class="row doctor-grid">
-                @foreach($doctors as $doctor)
-              
-                    <div class="col-md-4 col-sm-4  col-lg-3">
-                  
-                        <div class="profile-widget">
-                            <div class="doctor-img">
-                                <a class="avatar" href="profile.html"><img alt="" src="{{asset('doctors')}}/{{$doctor->photo}}"></a>
+                    @endif
+                        <form method="POST" action="{{route('store.department')}}">
+                        @csrf
+							<div class="form-group">
+								<label>Department Name</label>
+								<input name="department_name" class="form-control" type="text">
+							</div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="description" cols="30" rows="4" class="form-control"></textarea>
                             </div>
-                            <div class="dropdown profile-action">
-                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="/edit-doctor/{{$doctor->id}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                    <a class="dropdown-item" class="btn btn-danger"  href="/delete-doctor/{{$doctor->id}}"><i class="fa fa-trash-o m-r-5"></i> Delete</a> 
-                                </div>
+                          
+                            <div class="m-t-20">
+                                <button type="submit" class="btn btn-primary">Create Department</button>
                             </div>
-                            <h4 class="doctor-name text-ellipsis"><a href="profile.html">{{$doctor->first_name}}</a></h4>
-                            <div class="doc-prof">{{$doctor->title}}</div>
-                            <div class="user-country">
-                                <i class="fa fa-map-marker"></i> {{$doctor->country}}
-                            </div>
-                        </div>
-                      
-                    </div>
-                    @endforeach
-                </div>
-				<div class="row">
-                    <div class="col-sm-12">
-                        <div class="see-all">
-                            <a class="see-all-btn" href="javascript:void(0);">Load More</a>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="notification-box">
+			<div class="notification-box">
                 <div class="msg-sidebar notifications msg-noti">
                     <div class="topnav-dropdown-header">
                         <span>Messages</span>
