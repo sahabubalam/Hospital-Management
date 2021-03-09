@@ -157,7 +157,7 @@
                             <a href="/appointment-list"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
                         </li>
                         <li>
-                            <a href="schedule.html"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
+                            <a href="/doctor-schedule"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
                         </li>
                         <li>
                             <a href="/department-list"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
@@ -165,9 +165,9 @@
 						<li class="submenu">
 							<a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
-								<li><a href="employees.html">Employees List</a></li>
-								<li><a href="leaves.html">Leaves</a></li>
-								<li><a href="holidays.html">Holidays</a></li>
+								<li><a href="/employee-list">Employees List</a></li>
+								<li><a href="/employee-leave-list">Leaves</a></li>
+								<li><a href="/holiday-list">Holidays</a></li>
 								<li><a href="attendance.html">Attendance</a></li>
 							</ul>
 						</li>

@@ -5,6 +5,10 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DoctorScheduleController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeLeaveController;
+use App\Http\Controllers\HolidayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +51,21 @@ Route::get('/appointment-list',[AppointmentController::class,'appointmentList'])
 Route::get('/add-appointment',[AppointmentController::class,'addAppointment']);
 Route::get('/findPatientEmail',[AppointmentController::class,'findPatientEmail']);
 Route::post('/store-appointment',[AppointmentController::class,'store'])->name('store.appointment');
-
-
-
-
+//for doctor schedule
+Route::get('/doctor-schedule',[DoctorScheduleController::class,'doctorScheduleList']);
+Route::get('/add-doctorSchedule',[DoctorScheduleController::class,'addDoctorSchedule']);
+Route::post('/store-doctorSchedule',[DoctorScheduleController::class,'store'])->name('store.doctorSchedule');
+Route::get('/schedule-update/{id}',[DoctorScheduleController::class,'updateStatus'])->name('schedule.update');
+//for employee
+Route::get('/employee-list',[EmployeeController::class,'employeeList']);
+Route::get('/add-employee',[EmployeeController::class,'addEmployee']);
+Route::post('/store-employee',[EmployeeController::class,'store'])->name('store.employee');
+Route::get('/edit-employee/{id}',[EmployeeController::class,'editEmployee'])->name('edit.employee');
+Route::post('/update-employee',[EmployeeController::class,'updateEmployee'])->name('update.employee');
+Route::get('/delete-employee/{id}',[EmployeeController::class,'deleteEmployee'])->name('delete.employee');
+//for employeeleave
+Route::get('/employee-leave-list',[EmployeeLeaveController::class,'employeeLeaveList']);
+Route::get('/add-employee-leave',[EmployeeLeaveController::class,'addEmployeeLeaveList']);
+Route::post('/store-employee-leave',[EmployeeLeaveController::class,'store'])->name('store.leave');
+//for holiday
+Route::get('/holiday-list',[HolidayController::class,'holidayList']);
