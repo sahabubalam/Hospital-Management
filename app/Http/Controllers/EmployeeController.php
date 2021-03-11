@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use DB;
+use Noifiable;
+use App\Notifications\sendEmailToEmployee;
 
 class EmployeeController extends Controller
 {

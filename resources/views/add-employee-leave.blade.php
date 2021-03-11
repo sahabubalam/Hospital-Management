@@ -62,23 +62,13 @@
                                 </div>
 							</div>
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="form-group">
 										<label>Number of days <span class="text-danger">*</span></label>
 										<input class="form-control" name="no_of_days"  type="text">
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Status <span class="text-danger">*</span></label>
-										<select class="form-control" name="status">
-                                        <option>Select Status</option>
-                                        <option value="0">0</option>
-                                        <option  value="1">1</option>
-                                        
-                                    </select>
-									</div>
-								</div>
+								
 							</div>
                             <div class="form-group">
                                 <label>Leave Reason <span class="text-danger">*</span></label>

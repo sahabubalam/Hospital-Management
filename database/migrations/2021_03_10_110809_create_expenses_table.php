@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHolidaysTable extends Migration
+class CreateExpensesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateHolidaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('holidays', function (Blueprint $table) {
+        Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('holiday_date');
-            $table->string('day');
+            $table->string('item_name');
+            $table->string('purchase_from');
+            $table->string('purchase_by');
+            $table->string('purchase_date');
+            $table->string('amount');
+            $table->string('paid_by');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateHolidaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('holidays');
+        Schema::dropIfExists('expenses');
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\DoctorScheduleController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\HolidayController;
+use App\Http\Controllers\ExpenseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,5 +68,12 @@ Route::get('/delete-employee/{id}',[EmployeeController::class,'deleteEmployee'])
 Route::get('/employee-leave-list',[EmployeeLeaveController::class,'employeeLeaveList']);
 Route::get('/add-employee-leave',[EmployeeLeaveController::class,'addEmployeeLeaveList']);
 Route::post('/store-employee-leave',[EmployeeLeaveController::class,'store'])->name('store.leave');
+Route::get('/leave-approved/{id}',[EmployeeLeaveController::class,'approved'])->name('leave.approved');
 //for holiday
 Route::get('/holiday-list',[HolidayController::class,'holidayList']);
+Route::get('/add-holiday',[HolidayController::class,'addHoliday']);
+Route::post('/store-holiday',[HolidayController::class,'store'])->name('store.holiday');
+//for expenses
+Route::get('/expense-list',[ExpenseController::class,'expenseList']);
+Route::get('/add-expense',[ExpenseController::class,'addExpense']);
+Route::post('/store-expense',[ExpenseController::class,'store'])->name('store.expense');

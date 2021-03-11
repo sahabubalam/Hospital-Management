@@ -63,6 +63,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
+                        @if(Session::has('status_updated'))
+                        <div class="alert alert-success" role="alert">
+                            {{Session::get('status_updated')}}
+                        </div>
+                    @endif
                             <table class="table table-striped custom-table mb-0 datatable">
                                 <thead>
                                     <tr>
@@ -92,13 +97,14 @@
                                         <td class="text-center">
                                             <div class="dropdown action-label">
                                                 <a class="custom-badge status-purple dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                    New
+                                                    Pending
                                                 </a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#">New</a>
-                                                    <a class="dropdown-item" href="#">Pending</a>
+                                                <div class="dropdown-menu dropdown-menu-right">    
+                                                <?php if($leave->status=='1') { ?>  
                                                     <a class="dropdown-item" href="#">Approved</a>
-                                                    <a class="dropdown-item" href="#">Declined</a>
+                                                    <?php } else { ?>
+                                                    <a class="dropdown-item" href="/leave-approved/{{$leave->id}}">Pending</a> 
+                                                    <?php } ?>                                                 
                                                 </div>
                                             </div>
                                         </td>

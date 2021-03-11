@@ -4,116 +4,81 @@
 <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-sm-5 col-5">
-                        <h4 class="page-title">Holidays 2018</h4>
-                    </div>
-                    <div class="col-sm-7 col-7 text-right m-b-30">
-                        <a href="/add-holiday" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Holiday</a>
+                    <div class="col-lg-8 offset-lg-2">
+                        <h4 class="page-title">New Expense</h4>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-responsive">
-                            <table class="table table-striped custom-table mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Title </th>
-                                        <th>Holiday Date</th>
-                                        <th>Day</th>
-                                        <th class="text-right">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="holiday-completed">
-                                        <td>1</td>
-                                        <td>New Year</td>
-                                        <td>1 Jan 2018</td>
-                                        <td>Monday</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="holiday-completed">
-                                        <td>2</td>
-                                        <td>Good Friday</td>
-                                        <td>13 Apr 2018</td>
-                                        <td>Friday</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="holiday-completed">
-                                        <td>3</td>
-                                        <td>May Day</td>
-                                        <td>1 May 2018</td>
-                                        <td>Tuesday</td>
-                                        <td class="text-center">
-                                        </td>
-                                    </tr>
-                                    <tr class="holiday-completed">
-                                        <td>4</td>
-                                        <td>Memorial Day</td>
-                                        <td>28 May 2018</td>
-                                        <td>Monday</td>
-                                        <td class="text-center">
-                                        </td>
-                                    </tr>
-                                    <tr class="holiday-completed">
-                                        <td>5</td>
-                                        <td>Ramzon</td>
-                                        <td>26 Jun 2018</td>
-                                        <td>Monday</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="holiday-upcoming">
-                                        <td>6</td>
-                                        <td>Bakrid</td>
-                                        <td>23 Aug 2018</td>
-                                        <td>Wednesday</td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-holiday.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_holiday"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="holiday-upcoming">
-                                        <td>7</td>
-                                        <td>Deepavali</td>
-                                        <td>18 Oct 2018</td>
-                                        <td>Wednesday</td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-holiday.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_holiday"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="holiday-upcoming">
-                                        <td>8</td>
-                                        <td>Christmas</td>
-                                        <td>25 Dec 2018</td>
-                                        <td>Tuesday</td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-holiday.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_holiday"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="col-lg-8 offset-lg-2">
+                    @if(Session::has('expense_added'))
+                        <div class="alert alert-success" role="alert">
+                            {{Session::get('expense_added')}}
                         </div>
+                    @endif
+                        <form method="POST" action="{{route('store.expense')}}">
+                        @csrf
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Item Name</label>
+                                        <input class="form-control" name="item_name" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Purchase From</label>
+                                        <input class="form-control" name="purchase_from" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Purchase Date</label>
+                                        <div class="cal-icon" >
+                                            <!-- <input type="text" class="form-control datetimepicker"> -->
+                                            <input type="text" id="datepicker" class="form-control" id="date" name="purchase_date">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Purchased By </label>
+                                        <select class="form-control" name="purchase_by">
+                                        @foreach($emps as $emp)
+                                            <option value="{{$emp->id}}">{{$emp->first_name}}</option>
+                                       @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Amount</label>
+                                        <input placeholder="$50" name="amount" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Paid By</label>
+                                        <select class="form-control" name="paid_by">
+                                            <option value="Cash">Cash</option>
+                                            <option value="Cheque">Cheque</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            
+                            <div class="m-t-20">
+                                <button class="btn btn-primary">Create Expense</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="notification-box">
+			<div class="notification-box">
                 <div class="msg-sidebar notifications msg-noti">
                     <div class="topnav-dropdown-header">
                         <span>Messages</span>

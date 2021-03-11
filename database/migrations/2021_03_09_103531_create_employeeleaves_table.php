@@ -20,7 +20,7 @@ class CreateEmployeeleavesTable extends Migration
             $table->string('from');
             $table->string('to');
             $table->integer('no_of_days')->unsigned();
-            $table->string('status');
+            $table->string('status')->default(0);
             $table->string('leave_reason');
             $table->timestamps();
         });

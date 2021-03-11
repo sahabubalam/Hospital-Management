@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employeeleave;
 use App\Models\Employee;
+use App\Notifications\sendEmailToEmployee;
+use Notification;
 use DB;
 
 class EmployeeLeaveController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //employeeLeaveList
 
     public function  employeeLeaveList()
@@ -35,10 +41,29 @@ class EmployeeLeaveController extends Controller
         $leave->from=$request->from;
         $leave->to=$request->to;
         $leave->no_of_days=$request->no_of_days;
-        $leave->status=$request->status;
         $leave->leave_reason=$request->leave_reason;
        // return response()->json($leave);
        $leave->save();
         return back()->with('employee_leave','Employee application inserted successfully');
+    }
+    public function approved($id)
+    {
+        $approved=Employeeleave::find($id);
+        $emp=$approved->employee_id;
+        $msg=Employee::find($emp);
+        if($approved->status=='0')
+        {
+            $status='1';
+            $approved->status=$status;
+            $approved->save();
+            $msg->notify(new sendEmailToEmployee($msg));
+            return back()->with('status_updated','Status updated successfully');
+        }
+        else
+        {
+            $status='0';
+        }
+        
+
     }
 }
