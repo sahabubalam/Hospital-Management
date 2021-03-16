@@ -177,7 +177,7 @@
 								<li><a href="invoices.html">Invoices</a></li>
 								<li><a href="payments.html">Payments</a></li>
 								<li><a href="/expense-list">Expenses</a></li>
-								<li><a href="taxes.html">Taxes</a></li>
+								<li><a href="/tax-list">Taxes</a></li>
 								<li><a href="provident-fund.html">Provident Fund</a></li>
 							</ul>
 						</li>

@@ -25,7 +25,14 @@ class AppointmentController extends Controller
 
     public function appointmentList()
     {
-        return view('appointment-list');
+       
+        $appointment=DB::table('appointments')
+        ->join('patients','appointments.patient_id','patients.id')
+        ->join('departments','appointments.department_id','departments.id')
+        ->join('doctors','appointments.doctor_id','doctors.id')
+        ->select('appointments.*','doctors.first_name','patients.name','patients.age','departments.department_name')
+        ->get();
+        return view('appointment-list',compact('appointment'));
     }
     //add addAppointment
     public function addAppointment()
@@ -61,5 +68,12 @@ class AppointmentController extends Controller
         $patient->notify(new sendEmailToPatient($patient));
         return back()->with('appointed_added','Appointement added successfully');
 
+    }
+    //edit appointment
+    public function deleteAppointment($id)
+    {
+       $appointment=Appointment::find($id);
+       $appointment->delete();
+       return back()->with('appointment_deleted','Appointment information deleted successfully');
     }
 }

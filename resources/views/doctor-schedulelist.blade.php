@@ -14,9 +14,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="table-responsive">
-                        @if(Session::has('status_updated'))
+                        @if(Session::has('schedule_deleted'))
                         <div class="alert alert-success" role="alert">
-                            {{Session::get('status_updated')}}
+                            {{Session::get('schedule_deleted')}}
                         </div>
                         @endif 
 							<table class="table table-border table-striped custom-table mb-0">
@@ -50,8 +50,8 @@
 											<div class="dropdown dropdown-action">
 												<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
 												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="edit-schedule.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-													<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_schedule"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+													<a class="dropdown-item" href="/edit-schedule/{{$schedule->id}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+													<a class="dropdown-item" href="/delete-schedule/{{$schedule->id}}" data-toggle="modal" ><i class="fa fa-trash-o m-r-5"></i> Delete</a>
 												</div>
 											</div>
 										</td>

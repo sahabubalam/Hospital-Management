@@ -51,4 +51,32 @@ class DepartmentController extends Controller
         return back()->with('status_updated','Status updated successfully');
 
     }
+    //edit department
+    public function editDepartment($id)
+    {
+        $department=Department::find($id);
+        return view('edit-department',compact('department'));
+    }
+    //update department 
+    public function updateDepartment(Request $request)
+    {
+        $validatedData = $request->validate([
+            'department_name' => 'required|max:255',
+        ]);
+        $department=Department::find($request->id);
+        $department->department_name=$request->department_name;
+        $department->description=$request->description;
+        $department->save();
+        //return response()->json($department);
+      return back()->with('department_updated','Department updated successfully');
+    }
+    //delete department
+    public function deleteDepartment($id)
+    {
+        $department=Department::find($id);
+        $department->delete();
+        //return response()->json($doctor);
+        return back()->with('departmentt_deleted','Department information deleted successfully');
+
+    }
 }

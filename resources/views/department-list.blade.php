@@ -22,16 +22,17 @@
                             <table class="table table-striped custom-table mb-0 datatable">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>SI</th>
                                         <th>Department Name</th>
                                         <th>Status</th>
                                         <th class="text-right">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $sum=1;?>
                                 @foreach($departments as $department)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{$sum++}}</td>
                                         <td>{{$department->department_name}}</td>
                                        <?php if($department->status=='1') { ?>
                                         <td><a href="/status-update/{{$department->id}}" class="custom-badge status-green">Active</span></a>
@@ -46,8 +47,8 @@
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-department.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                    <a class="dropdown-item" href="/edit-department/{{$department->id}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="/delete-department/{{$department->id}}" data-toggle="modal" ><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                 </div>
                                             </div>
                                         </td>

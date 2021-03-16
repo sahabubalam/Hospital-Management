@@ -66,4 +66,40 @@ class DoctorScheduleController extends Controller
     //DB::table('departments')->where('id',$id)->update($value);
     return back()->with('status_updated','Status updated successfully');
    }
+   //edit schedule
+   public function editSchedule($id)
+   {
+        $department=Department::all();
+        $doctor=Doctor::all();
+       $schedule=DoctorSchedule::find($id);
+       return view('edit-doctor-schedule',compact('schedule','department','doctor'));
+
+   }
+   public function updateDoctorSchedule(Request $request)
+   {
+    $validatedData = $request->validate([
+        'department_id' => 'required|max:255',
+        'doctor_id' => 'required',
+        'available_days' => 'required',
+        'available_time' => 'required',
+    ]);
+    $schedule= DoctorSchedule::find($request->id);
+    $schedule->department_id=$request->department_id;
+    $schedule->doctor_id=$request->doctor_id;
+    $schedule->available_days=$request->available_days;
+    $schedule->available_time=$request->available_time;
+    $schedule->message=$request->message;
+    //return response()->json($schedule);
+    $schedule->save();
+    return back()->with('doctorschedule_updated','Doctore schedule inserted successfully');
+
+   }
+   //delete schedule
+   public function deleteSchedule($id)
+   {
+    $schedule=DoctorSchedule::find($id);
+    $schedule->delete();
+    //return response()->json($doctor);
+    return back()->with('schedule_deleted','Schedule information deleted successfully');
+   }
 }

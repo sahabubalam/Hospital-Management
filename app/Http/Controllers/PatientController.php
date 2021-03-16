@@ -58,6 +58,53 @@ class PatientController extends Controller
        return back()->with('patient_added','Patient inserted successfully');
         
     }
-    //patient list
+    //patient edit
+    public function editPatient($id)
+    {
+        $patient=Patient::find($id);
+        return view('edit-patient',compact('patient'));
+    }
+    //update 
+    public function updatePatient(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'age' => 'required',
+            'email' => 'required|max:255',
+            'dob' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'country' => 'required',
+            'city' => 'required', 
+            'state' => 'required',
+            'phone' => 'required',
+         
+        ]);
+        $patient=Patient::find($request->id);
+        $patient->name=$request->name;
+        $patient->username=$request->username;
+        $patient->age=$request->age;
+        $patient->email=$request->email;
+        $patient->dob=$request->dob;
+        $patient->gender=$request->gender;
+        $patient->address=$request->address;
+        $patient->country=$request->country;
+        $patient->city=$request->city;
+        $patient->state=$request->state;
+        $patient->phone=$request->phone;
+        $patient->postal_code=$request->postal_code;
+        $patient->save();
+       // return response()->json($patient);
+       return back()->with('patient_updated','Patient inserted successfully');
+    }
+    //delete patient
+    public function deletePatient($id)
+    {
+        $patient=Patient::find($id);
+        $patient->delete();
+        //return response()->json($doctor);
+        return back()->with('patient_deleted','Patient information deleted successfully');
+
+    }
     
 }

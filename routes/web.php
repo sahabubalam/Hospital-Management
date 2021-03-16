@@ -10,6 +10,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\TaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,23 +41,33 @@ Route::get('/delete-doctor/{id}',[DoctorController::class,'deleteDoctor']);
 Route::get('/patient-list',[PatientController::class,'patientList']);
 Route::get('/add-patient',[PatientController::class,'addPatient']);
 Route::post('/store-patient',[PatientController::class,'store'])->name('store.patient');
+Route::get('/edit-patient/{id}',[PatientController::class,'editPatient']);
+Route::post('/update-patient',[PatientController::class,'updatePatient'])->name('update.patient');
+Route::get('/delete-patient/{id}',[PatientController::class,'deletePatient']);
 
 //for department
 Route::get('/department-list',[DepartmentController::class,'departmentList']);
 Route::get('/add-department',[DepartmentController::class,'addDepartment']);
 Route::post('/store-department',[DepartmentController::class,'store'])->name('store.department');
 Route::get('/status-update/{id}',[DepartmentController::class,'updateStatus'])->name('status.update');
+Route::get('/edit-department/{id}',[DepartmentController::class,'editDepartment'])->name('edit.department');
+Route::post('/update-department',[DepartmentController::class,'updateDepartment'])->name('update.department');
+Route::get('/delete-department/{id}',[DepartmentController::class,'deleteDepartment'])->name('status.update');
 
 //for appointment
 Route::get('/appointment-list',[AppointmentController::class,'appointmentList']);
 Route::get('/add-appointment',[AppointmentController::class,'addAppointment']);
 Route::get('/findPatientEmail',[AppointmentController::class,'findPatientEmail']);
 Route::post('/store-appointment',[AppointmentController::class,'store'])->name('store.appointment');
+Route::get('/delete-appointment/{id}',[AppointmentController::class,'deleteAppointment']);
 //for doctor schedule
 Route::get('/doctor-schedule',[DoctorScheduleController::class,'doctorScheduleList']);
 Route::get('/add-doctorSchedule',[DoctorScheduleController::class,'addDoctorSchedule']);
 Route::post('/store-doctorSchedule',[DoctorScheduleController::class,'store'])->name('store.doctorSchedule');
 Route::get('/schedule-update/{id}',[DoctorScheduleController::class,'updateStatus'])->name('schedule.update');
+Route::get('/edit-schedule/{id}',[DoctorScheduleController::class,'editSchedule'])->name('edit.schedule');
+Route::post('/update-doctorSchedule',[DoctorScheduleController::class,'updateDoctorSchedule'])->name('update.doctorSchedule');
+Route::get('/delete-schedule/{id}',[DoctorScheduleController::class,'deleteSchedule'])->name('delete.schedule');
 //for employee
 Route::get('/employee-list',[EmployeeController::class,'employeeList']);
 Route::get('/add-employee',[EmployeeController::class,'addEmployee']);
@@ -77,3 +88,7 @@ Route::post('/store-holiday',[HolidayController::class,'store'])->name('store.ho
 Route::get('/expense-list',[ExpenseController::class,'expenseList']);
 Route::get('/add-expense',[ExpenseController::class,'addExpense']);
 Route::post('/store-expense',[ExpenseController::class,'store'])->name('store.expense');
+//tax list
+Route::get('/tax-list',[TaxController::class,'taxList']);
+Route::get('/add-tax',[TaxController::class,'addList']);
+Route::post('/store-tax',[TaxController::class,'store'])->name('store.tax');
