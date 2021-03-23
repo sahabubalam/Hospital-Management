@@ -19,11 +19,17 @@
                         @csrf
                             <div class="form-group">
                                 <label>Tax Name <span class="text-danger">*</span></label>
-                                <input class="form-control" name="tax_name" type="text">
+                                <input class="form-control @error('tax_name') is-invalid @enderror" name="tax_name" type="text">
+                                @error('tax_name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Tax Percentage (%) <span class="text-danger">*</span></label>
-                                <input class="form-control" name="tax_parcent" type="text">
+                                <input class="form-control @error('tax_parcent') is-invalid @enderror" name="tax_parcent" type="text">
+                                @error('tax_parcent')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                            
                             <div class="m-t-20">

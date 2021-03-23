@@ -10,30 +10,25 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                    @if(Session::has('expense_added'))
+                    @if(Session::has('expense_updated'))
                         <div class="alert alert-success" role="alert">
-                            {{Session::get('expense_added')}}
+                            {{Session::get('expense_updated')}}
                         </div>
                     @endif
-                        <form method="POST" action="{{route('store.expense')}}">
+                        <form method="POST" action="{{route('update.expense')}}">
                         @csrf
+                        <input type="hidden" name="id" value="{{$expense->id}}" >
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Item Name</label>
-                                        <input class="form-control  @error('item_name') is-invalid @enderror" name="item_name" type="text">
-                                        @error('item_name')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        <input class="form-control" name="item_name" value="{{$expense->item_name}}" type="text">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Purchase From</label>
-                                        <input class="form-control @error('purchase_from') is-invalid @enderror" name="purchase_from" type="text">
-                                        @error('purchase_from')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        <input class="form-control" value="{{$expense->purchase_from}}" name="purchase_from" type="text">
                                     </div>
                                 </div>
                             </div>
@@ -43,25 +38,18 @@
                                         <label>Purchase Date</label>
                                         <div class="cal-icon" >
                                             <!-- <input type="text" class="form-control datetimepicker"> -->
-                                            <input type="text" id="datepicker" class="form-control @error('purchase_date') is-invalid @enderror" id="date" name="purchase_date">
-                                            @error('purchase_date')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
+                                            <input type="text" id="datepicker" class="form-control" id="date" value="{{$expense->purchase_date}}" <?php if($expense->purchase_date) echo "selected";?> name="purchase_date">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Purchased By </label>
-                                        <select class="form-control @error('purchase_by') is-invalid @enderror" name="purchase_by">
-                                            <option selected="true" disabled >select</option>
+                                        <select class="form-control" name="purchase_by">
                                         @foreach($emps as $emp)
-                                            <option value="{{$emp->id}}">{{$emp->first_name}}</option>
+                                            <option value="{{$emp->id}}" <?php if($emp->id==$expense->id) echo "selected";?>>{{$emp->first_name}}</option>
                                        @endforeach
                                         </select>
-                                        @error('purchase_by')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -69,24 +57,17 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Amount</label>
-                                        <input placeholder="$50" name="amount" class="form-control @error('amount') is-invalid @enderror" type="text">
-                                        @error('amount')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                                        <input placeholder="" name="amount" value="${{$expense->amount}}" class="form-control" type="text">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Paid By</label>
-                                        
-                                        <select class="form-control @error('paid_by') is-invalid @enderror" name="paid_by">
-                                            <option selected="true" disabled >select</option>
-                                            <option value="Cash">Cash</option>
-                                            <option value="Cheque">Cheque</option>
+                                        <select class="form-control" name="paid_by">
+                                    
+                                            <option value="Cash"  <?php if($expense->paid_by=='Cash') echo "selected";?>>Cash</option>
+                                            <option value="Cheque" <?php if($expense->paid_by=='Cheque') echo "selected";?>>Cheque</option>
                                         </select>
-                                        @error('paid_by')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>

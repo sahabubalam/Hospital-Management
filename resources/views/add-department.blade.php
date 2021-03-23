@@ -19,7 +19,10 @@
                         @csrf
 							<div class="form-group">
 								<label>Department Name</label>
-								<input name="department_name" class="form-control" type="text">
+								<input name="department_name" class="form-control @error('department_name') is-invalid @enderror" type="text">
+                                @error('department_name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
 							</div>
                             <div class="form-group">
                                 <label>Description</label>

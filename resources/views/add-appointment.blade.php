@@ -28,11 +28,12 @@
 									<div class="form-group">
 										<label>Patient Name</label>
 										<select class="form-control patient_name" name="patient_id">
-                                        <option>Select</option>
+                                        <option selected="true" disabled >Select</option>
                                         @foreach($patients as $patient)
 											<option value="{{$patient->id}}">{{$patient->name}}</option>
 										@endforeach	
 										</select>
+                                        
 									</div>
                                 </div>
                             </div>

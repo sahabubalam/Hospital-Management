@@ -22,7 +22,7 @@
                                     <div class="form-group">
 										<label>Department Name</label>
 										<select class="form-control" name="department_id">
-											<option>Select</option>
+											<option selected="true" disabled >Select</option>
                                             @foreach($departments as $department)
 											<option value="{{$department->id}}">{{$department->department_name}}</option>
 											@endforeach
@@ -33,7 +33,7 @@
 									<div class="form-group">
 										<label>Doctor name</label>
 										<select class="form-control" name="doctor_id">
-											<option>Select name</option>
+											<option selected="true" disabled >Select name</option>
                                             @foreach($doctors as $doctor)
 											<option value="{{$doctor->id}}">{{$doctor->first_name}}</option>
 											@endforeach

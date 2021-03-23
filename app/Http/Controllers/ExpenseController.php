@@ -15,7 +15,8 @@ class ExpenseController extends Controller
     //expense list
     public function expenseList()
     {
-        return view('expense-list');
+        $expenses=Expense::all();
+        return view('expense-list',compact('expenses'));
     }
     //ad expense
     public function addExpense()
@@ -26,6 +27,15 @@ class ExpenseController extends Controller
     //store 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'item_name' => 'required|max:255',
+            'purchase_from' => 'required',
+            'purchase_date' => 'required',
+            'purchase_by' => 'required',
+            'amount' => 'required', 
+            'paid_by' => 'required', 
+          
+        ]);
         $expense=new Expense();
         $expense->item_name=$request->item_name;
         $expense->purchase_from=$request->purchase_from;
@@ -36,5 +46,43 @@ class ExpenseController extends Controller
         //return response()->json($expense);
         $expense->save();
         return back()->with('expense_added','Expense inserted successfully');
+    }
+    //edit expense 
+    public function editExpense($id)
+    {
+        $emps=Employee::all();
+        $expense=Expense::find($id);
+        return view('edit-expense',compact('expense','emps'));
+    }
+    //update expense 
+    public function updateExpense(Request $request)
+    {
+        $validatedData = $request->validate([
+            'item_name' => 'required|max:255',
+            'purchase_from' => 'required',
+            'purchase_date' => 'required',
+            'purchase_by' => 'required',
+            'amount' => 'required', 
+            'paid_by' => 'required', 
+          
+        ]);
+        $expense=Expense::find($request->id);
+        $expense->item_name=$request->item_name;
+        $expense->purchase_from=$request->purchase_from;
+        $expense->purchase_date=$request->purchase_date;
+        $expense->purchase_by=$request->purchase_by;
+        $expense->amount=$request->amount;
+        $expense->paid_by=$request->paid_by;
+       // return response()->json($expense);
+        $expense->save();
+        return back()->with('expense_updated','Expense updated successfully');
+    }
+    //delete expense 
+    public function deleteExpense($id)
+    {
+        $expense=Expense::find($id);
+        $expense->delete();
+        //return response()->json($doctor);
+        return back()->with('expense_deleted','Expenses information deleted successfully');
     }
 }

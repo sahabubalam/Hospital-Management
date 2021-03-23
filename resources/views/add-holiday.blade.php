@@ -19,11 +19,14 @@
                         @csrf
                             <div class="form-group">
                                 <label>Holiday Name <span class="text-danger">*</span></label>
-                                <input class="form-control" name="title" type="text">
+                                <input class="form-control @error('title') is-invalid @enderror" name="title" type="text">
+                                @error('title')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                     <label>Day</label>
-                                    <select class="form-control" name="day">
+                                    <select class="form-control @error('title') is-invalid @enderror" name="day">
                                         <option value="Sutarday">Sutarday</option>
                                         <option value="Sunday">Sunday</option>
                                         <option value="Monday">Monday</option>
@@ -32,12 +35,18 @@
                                         <option value="Thursday">Thursday</option>
                                         <option value="Friday">Friday</option>
                                     </select>
+                                    @error('holiday_date')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                <div class="form-group">
                                     <label>Holiday Date</label>
                                     <div class="cal-icon" >
                                         <!-- <input type="text" class="form-control datetimepicker"> -->
-                                        <input type="text" id="datepicker" class="form-control" id="date" name="holiday_date">
+                                        <input type="text" id="datepicker" class="form-control @error('holiday_date') is-invalid @enderror" id="date" name="holiday_date">
+                                        @error('holiday_date')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 

@@ -178,13 +178,13 @@
 								<li><a href="payments.html">Payments</a></li>
 								<li><a href="/expense-list">Expenses</a></li>
 								<li><a href="/tax-list">Taxes</a></li>
-								<li><a href="provident-fund.html">Provident Fund</a></li>
+								<li><a href="/providentfund-list">Provident Fund</a></li>
 							</ul>
 						</li>
 						<li class="submenu">
 							<a href="#"><i class="fa fa-book"></i> <span> Payroll </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
-								<li><a href="salary.html"> Employee Salary </a></li>
+								<li><a href="/staff-salary-list"> Employee Salary </a></li>
 								<li><a href="salary-view.html"> Payslip </a></li>
 							</ul>
 						</li>

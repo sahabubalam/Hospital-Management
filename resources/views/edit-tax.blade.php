@@ -5,95 +5,30 @@
             <div class="content">
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <h4 class="page-title">New Expense</h4>
+                        <h4 class="page-title">Add Tax</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                    @if(Session::has('expense_added'))
+                    @if(Session::has('tax_added'))
                         <div class="alert alert-success" role="alert">
-                            {{Session::get('expense_added')}}
+                            {{Session::get('tax_added')}}
                         </div>
                     @endif
-                        <form method="POST" action="{{route('store.expense')}}">
+                        <form method="POST" action="{{route('update.tax')}}">
                         @csrf
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Item Name</label>
-                                        <input class="form-control  @error('item_name') is-invalid @enderror" name="item_name" type="text">
-                                        @error('item_name')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Purchase From</label>
-                                        <input class="form-control @error('purchase_from') is-invalid @enderror" name="purchase_from" type="text">
-                                        @error('purchase_from')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                        <input type="hidden" name="id" value="{{$tax->id}}" >
+                            <div class="form-group">
+                                <label>Tax Name <span class="text-danger">*</span></label>
+                                <input class="form-control" value="{{$tax->tax_name}}" name="tax_name" type="text">
                             </div>
-                            <div class="row">
-                            <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Purchase Date</label>
-                                        <div class="cal-icon" >
-                                            <!-- <input type="text" class="form-control datetimepicker"> -->
-                                            <input type="text" id="datepicker" class="form-control @error('purchase_date') is-invalid @enderror" id="date" name="purchase_date">
-                                            @error('purchase_date')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Purchased By </label>
-                                        <select class="form-control @error('purchase_by') is-invalid @enderror" name="purchase_by">
-                                            <option selected="true" disabled >select</option>
-                                        @foreach($emps as $emp)
-                                            <option value="{{$emp->id}}">{{$emp->first_name}}</option>
-                                       @endforeach
-                                        </select>
-                                        @error('purchase_by')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Amount</label>
-                                        <input placeholder="$50" name="amount" class="form-control @error('amount') is-invalid @enderror" type="text">
-                                        @error('amount')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Paid By</label>
-                                        
-                                        <select class="form-control @error('paid_by') is-invalid @enderror" name="paid_by">
-                                            <option selected="true" disabled >select</option>
-                                            <option value="Cash">Cash</option>
-                                            <option value="Cheque">Cheque</option>
-                                        </select>
-                                        @error('paid_by')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>Tax Percentage (%) <span class="text-danger">*</span></label>
+                                <input class="form-control" value="{{$tax->tax_parcent}}" name="tax_parcent" type="text">
                             </div>
                            
-                            
                             <div class="m-t-20">
-                                <button class="btn btn-primary">Create Expense</button>
+                                <button class="btn btn-primary">Create Tax</button>
                             </div>
                         </form>
                     </div>

@@ -61,6 +61,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
+                            @if(Session::has('expense_deleted'))
+                            <div class="alert alert-success" role="alert">
+                                {{Session::get('expense_deleted')}}
+                            </div>
+                            @endif
                             <table class="table table-striped custom-table mb-0 datatable">
                                 <thead>
                                     <tr>
@@ -75,66 +80,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($expenses as $expense)
                                     <tr>
                                         <td>
-                                            <strong>Stretcher</strong>
+                                            <strong>{{$expense->item_name}}</strong>
                                         </td>
-                                        <td>Hospital Equipment Inc</td>
-                                        <td>17 Aug 2018</td>
-                                        <td>Loren Gatlin</td>
-                                        <td>$8048</td>
-                                        <td>Cash</td>
+                                        <td>{{$expense->purchase_from}}</td>
+                                        <td>{{$expense->purchase_date}}</td>
+                                        <td>{{$expense->purchase_by}}</td>
+                                        <td>${{$expense->amount}}</td>
+                                        <td>{{$expense->paid_by}}</td>
                                        
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-expense.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_expense"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                    <a class="dropdown-item" href="/edit-expense/{{$expense->id}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="/delete-expense/{{$expense->id}}" data-toggle="modal" ><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Anaesthetic machine</strong>
-                                        </td>
-                                        <td>Biomedical Equipment Inc</td>
-                                        <td>22 Jun 2018</td>
-                                        <td>Tarah Shropshire</td>
-                                        <td>$62480</td>
-                                        <td>Cheque</td>
                                         
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-expense.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_expense"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-									<tr>
-                                        <td>
-                                            <strong>Aspiration/Suction Pump</strong>
-                                        </td>
-                                        <td>Medi Pro Service</td>
-                                        <td>24 Jul 2018</td>
-                                        <td>Tarah Shropshire</td>
-                                        <td>$3250</td>
-                                        <td>Cheque</td>
-                                      
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-expense.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_expense"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
+                                   
                                 </tbody>
                             </table>
                         </div>

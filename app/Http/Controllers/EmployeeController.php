@@ -55,11 +55,11 @@ class EmployeeController extends Controller
             $image->move(public_path('employees'),$imagename);
             $employee->photo=$imagename;
             $employee->save();
-           // return response()->json($employee);
+            //return response()->json($employee);
            return back()->with('employee_added','Employee information inserted successfully');
         }
-         $employee->save();
-       // return response()->json($employee);
+        $employee->save();
+        //return response()->json($employee);
         return back()->with('employee_added','Employee information inserted successfully');
         
     }

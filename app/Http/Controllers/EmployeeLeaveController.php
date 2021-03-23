@@ -63,7 +63,42 @@ class EmployeeLeaveController extends Controller
         {
             $status='0';
         }
-        
-
     }
+    //edit leave
+    public function editLeave($id)
+    {
+        
+        $employees=Employee::all();
+        $empLeave=Employeeleave::find($id);
+        return view('edit-employee-leave',compact('employees','empLeave'));
+    }
+    public function updateEmployeeLeave(Request $request)
+    {
+        $validatedData = $request->validate([
+            'leave_type' => 'required|max:255',
+            'employee_id' => 'required',
+            'from' => 'required',
+            'to' => 'required',
+            'no_of_days' => 'required', 
+          
+        ]);
+        $leave=Employeeleave::find($request->id);
+        $leave->leave_type=$request->leave_type;
+        $leave->employee_id=$request->employee_id;
+        $leave->from=$request->from;
+        $leave->to=$request->to;
+        $leave->no_of_days=$request->no_of_days;
+        $leave->leave_reason=$request->leave_reason;
+       // return response()->json($leave);
+       $leave->save();
+        return back()->with('employee_leave','Employee application updated successfully');  
+    }
+    //delete leave
+    public function deleteLeave($id)
+    {
+        $leave=Employeeleave::find($id);
+        $leave->delete();
+        //return response()->json($doctor);
+        return back()->with('leave_deleted','Employee leave information deleted successfully');
+    } 
 }

@@ -67,7 +67,7 @@
                         <div class="alert alert-success" role="alert">
                             {{Session::get('status_updated')}}
                         </div>
-                    @endif
+                         @endif
                             <table class="table table-striped custom-table mb-0 datatable">
                                 <thead>
                                     <tr>
@@ -112,8 +112,8 @@
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-leave.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" title="Decline" data-toggle="modal" data-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                                    <a class="dropdown-item" href="/edit-leave/{{$leave->id}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="/delete-leave/{{$leave->id}}" title="Decline" data-toggle="modal"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                                 </div>
                                             </div>
                                         </td>
