@@ -18,8 +18,8 @@
                         aria-describedby="search-addon" />
                         <button type="submit" class="btn btn-primary">search</button>
                     </form>
-                </div> --}}
-                
+                </div>
+                 --}}
                 <div class="row form-group">
                     <div class="col-md-5">
                     <form action="/search" method="get" class="form-inline">
@@ -79,7 +79,7 @@
                                    
                                 </tbody>
                             </table>
-                            {{ $employees->links() }} 
+                           
 						</div>
                     </div>
                 </div>

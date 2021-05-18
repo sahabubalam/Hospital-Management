@@ -13,6 +13,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\ProvidentFundController;
 use App\Http\Controllers\StaffSalaryController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,7 @@ Route::post('/store-employee',[EmployeeController::class,'store'])->name('store.
 Route::get('/edit-employee/{id}',[EmployeeController::class,'editEmployee'])->name('edit.employee');
 Route::post('/update-employee',[EmployeeController::class,'updateEmployee'])->name('update.employee');
 Route::get('/delete-employee/{id}',[EmployeeController::class,'deleteEmployee'])->name('delete.employee');
+Route::get('/search',[EmployeeController::class,'search']);
 //for employeeleave
 Route::get('/employee-leave-list',[EmployeeLeaveController::class,'employeeLeaveList']);
 Route::get('/add-employee-leave',[EmployeeLeaveController::class,'addEmployeeLeaveList']);
@@ -115,3 +117,7 @@ Route::post('/update-provident-fund',[ProvidentFundController::class,'updateProv
 Route::get('/delete-provident-fund/{id}',[ProvidentFundController::class,'deleteProvidentFund']);
 //staff salary 
 Route::get('/staff-salary-list',[StaffSalaryController::class,'staffSalaryList']);
+//invoice
+Route::get('/invoice-list',[InvoiceController::class,'invoiceList']);
+Route::get('/add-invoice',[InvoiceController::class,'addInvoice']);
+Route::post('/store-invoice',[InvoiceController::class,'storeInvoice'])->name('store.invoice');

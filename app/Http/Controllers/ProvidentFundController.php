@@ -9,6 +9,10 @@ use DB;
 
 class ProvidentFundController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     //provident fund list
     public function providentFundList()

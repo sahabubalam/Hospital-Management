@@ -174,7 +174,7 @@
 						<li class="submenu">
 							<a href="#"><i class="fa fa-money"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
-								<li><a href="invoices.html">Invoices</a></li>
+								<li><a href="/invoice-list">Invoices</a></li>
 								<li><a href="payments.html">Payments</a></li>
 								<li><a href="/expense-list">Expenses</a></li>
 								<li><a href="/tax-list">Taxes</a></li>

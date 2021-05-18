@@ -18,7 +18,8 @@ class EmployeeController extends Controller
 
     public function employeeList()
     {
-        $employees=Employee::all();
+       // $employees=Employee::all();
+       $employees=Employee::orderBy('id','desc')->paginate(3);
         return view('employee-list',compact('employees'));
     }
     //add employee view
@@ -110,5 +111,11 @@ class EmployeeController extends Controller
         }
         $employee->delete();
         return back()->with('employee_deleted','Employee information deleted successfully');
+    }
+    public function search(Request $request)
+    {
+        $search=$request->search;
+        $employees=Employee::orderBy('id','desc')->where('first_name','like','%'.$search.'%')->get();
+        return view('employee-search',compact('employees'));
     }
 }
