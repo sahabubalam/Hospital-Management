@@ -14,7 +14,13 @@ class InvoiceController extends Controller
 {
     public function invoiceList()
     {
-        return view('invoice-list');
+        $data['patient_id']=Patient::orderBy('id')->first()->id;
+        $data['department_id']=Department::orderBy('id')->first()->id;
+        
+         $allData=Invoice::select('patient_id')->groupBy('patient_id')->get();
+        //  dd($data['allData']->toArray());
+       // $allData=Invoice::all();
+        return view('invoice-list',compact('allData'));
     }
     public function addInvoice()
     {
@@ -46,5 +52,12 @@ class InvoiceController extends Controller
         }
         return back()->with('invoice_created','Invoice information inserted successfully');
 
+    }
+    public function invoiceDetails($patient_id)
+    {
+       
+        $allData=Invoice::with(['patient','department'])->where('patient_id',$patient_id)->get(); 
+      
+        return view('invoice-details',compact('allData'));
     }
 }

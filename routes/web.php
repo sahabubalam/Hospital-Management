@@ -121,3 +121,4 @@ Route::get('/staff-salary-list',[StaffSalaryController::class,'staffSalaryList']
 Route::get('/invoice-list',[InvoiceController::class,'invoiceList']);
 Route::get('/add-invoice',[InvoiceController::class,'addInvoice']);
 Route::post('/store-invoice',[InvoiceController::class,'storeInvoice'])->name('store.invoice');
+Route::get('/invoice-details/{patient_id}',[InvoiceController::class,'invoiceDetails'])->name('invoice.details');
