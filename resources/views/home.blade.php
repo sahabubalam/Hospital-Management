@@ -86,9 +86,7 @@
                                     @foreach ($doctor=Doctor::all(); as $item)
                                     <li>
                                         <div class="contact-cont">
-                                            <div class="float-left user-img m-r-10">
-                                                <a href="profile.html" title="John Doe"></a>
-                                            </div>
+                                           
                                             <div class="contact-info">
                                                 <span class="contact-name text-ellipsis">{{$item->first_name}}</span>
                                                 <span class="contact-date">{{$item->title}}</span>

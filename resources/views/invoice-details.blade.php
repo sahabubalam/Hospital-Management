@@ -29,9 +29,10 @@
 <body>
     <table id="customers">
         <tr>
-          <td><h2>Laravel Learning</h2></td>
-          <td><h2>School ERP</h2>
-          <p>School Address</p>
+          <td><h2>Popular Hospital</h2></td>
+          <td><h2>Doctor Invoice</h2>
+          <p>Hospital Address:</p>
+          <p>Dhaka mirpur 10 block E</p>
           <p>Phone : 01756265446</p>
           <p>Email : sahabub.cse@gmail.com</p>
           </td>
@@ -68,7 +69,6 @@
     $count=$count+$invoice->amount
   @endphp
 
- 
   @endforeach
 
   <tr>
