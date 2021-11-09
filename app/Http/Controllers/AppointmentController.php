@@ -50,6 +50,16 @@ class AppointmentController extends Controller
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'appointment_id' => 'required',
+            'patient_id' => 'required',
+            'department_id' => 'required',
+            'doctor_id' => 'required',
+            'date' => 'required',
+            'patient_phone' => 'required',
+            'message' => 'required',
+         
+        ]);
         //$user =User::find(Auth::id());
         $patient=Patient::select('email')->where('id',$request->patient_id)->first();
         $app=new Appointment();
